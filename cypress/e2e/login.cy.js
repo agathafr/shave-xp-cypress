@@ -1,3 +1,7 @@
+
+import loginPage from '../support/pages/login'
+import shaversPage from '../support/pages/shavers'
+
 describe('login', () => {
 
     context('quando submeto o formulário', () => {
@@ -9,20 +13,9 @@ describe('login', () => {
                 password: 'pwd456'
             }
 
-            cy.visit('http://localhost:3000')
+            loginPage.submit(user.email, user.password)
 
-            cy.get('input[placeholder$=email]').type(user.email)
-
-            cy.get('input[placeholder*=senha]').type(user.password)
-
-            //button[text()="Entrar"]
-
-            cy.contains('button', 'Entrar')
-                .click()
-
-            cy.get('.logged-user div a')
-                .should('be.visible')
-                .should('have.text', 'Olá, ' + user.name)
+            shaversPage.header.userShouldLoggedIn(user.name)
         })
 
         it('não deve logar com senha incorreta', () => {
@@ -32,21 +25,11 @@ describe('login', () => {
                 password: '123456'
             }
 
-            cy.visit('http://localhost:3000')
-
-            cy.get('input[placeholder$=email]').type(user.email)
-
-            cy.get('input[placeholder*=senha]').type(user.password)
-
-            cy.contains('button', 'Entrar')
-                .click()
+            loginPage.submit(user.email, user.password)
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
-            cy.get('.notice-container')
-                .should('be.visible')
-                .find('.error p')
-                .should('have.text', message)
+            loginPage.noticeShouldBe(message)
         })
 
         it('não deve logar com email não cadastrado', () => {
@@ -56,22 +39,11 @@ describe('login', () => {
                 password: '123456'
             }
 
-            cy.visit('http://localhost:3000')
-
-            cy.get('input[placeholder$=email]').type(user.email)
-
-            cy.get('input[placeholder*=senha]').type(user.password)
-
-            cy.contains('button', 'Entrar')
-                .click()
+            loginPage.submit(user.email, user.password)
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
-            cy.get('.notice-container')
-                .should('be.visible')
-                .find('.error p')
-                .should('have.text', message)
+            loginPage.noticeShouldBe(message)
         })
     })
-
 })
