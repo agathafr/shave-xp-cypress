@@ -1,17 +1,18 @@
 
 import loginPage from '../support/pages/login'
 import shaversPage from '../support/pages/shavers'
+import data from '../fixtures/users-login.json'
 
 describe('login', () => {
 
     context('quando submeto o formulário', () => {
 
-        it.only('deve logar com sucesso', () => {
-            cy.fixture('users-login').then(function(data) {
-                loginPage.submit(data.email, data.password)
+        it('deve logar com sucesso', () => {
+            const user = data
 
-                shaversPage.header.userShouldLoggedIn(data.name)
-            })
+            loginPage.submit(user.email, user.password)
+
+            shaversPage.header.userShouldLoggedIn(user.name)
         })
 
         it('não deve logar com senha incorreta', () => {
