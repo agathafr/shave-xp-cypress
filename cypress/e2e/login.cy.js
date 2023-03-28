@@ -8,7 +8,7 @@ describe('login', () => {
     context('quando submeto o formulário', () => {
 
         it('deve logar com sucesso', () => {
-            const user = data
+            const user = data.success
 
             loginPage.submit(user.email, user.password)
 
@@ -16,11 +16,7 @@ describe('login', () => {
         })
 
         it('não deve logar com senha incorreta', () => {
-            const user = {
-                name: 'Agatha',
-                email: 'agathafranca@outlook.com',
-                password: '123456'
-            }
+            const user = data.invpass
 
             loginPage.submit(user.email, user.password)
 
@@ -30,11 +26,7 @@ describe('login', () => {
         })
 
         it('não deve logar com email não cadastrado', () => {
-            const user = {
-                name: 'Agatha',
-                email: 'agathafranca@404.com',
-                password: '123456'
-            }
+            const user = data.email404
 
             loginPage.submit(user.email, user.password)
 
@@ -51,15 +43,8 @@ describe('login', () => {
     })
 
     context('senha muito curta', () => {
-        const passwords = [
-            '1',
-            '12',
-            '123',
-            '1234',
-            '12345'
-        ]
 
-        passwords.forEach((p) => {
+        data.shortpass.forEach((p) => {
             it(`não deve logar com a senha: ${p}`, () => {
                 loginPage.submit('agathafranca@outlook.com', p)
 
@@ -69,18 +54,8 @@ describe('login', () => {
     })
 
     context('email no formato incorreto', () => {
-        const emails = [
-            'agatha&gmail.com',
-            'agatha.com.br',
-            '@gmail.com',
-            '@',
-            'agatha@',
-            '121323',
-            '@#@!3!@',
-            'xpto123'
-        ]
 
-        emails.forEach((e) => {
+        data.invemails.forEach((e) => {
             it(`não deve logar com o email no formato incorreto: ${e}`, () => {
                 loginPage.submit(e, 'pwd456')
 

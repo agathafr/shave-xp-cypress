@@ -1,5 +1,32 @@
 {
-    "name": "Agatha",
-    "email": "agathafranca@outlook.com",
-    "password": "pwd456"
+    "success": {
+        "name": "Agatha",
+        "email": "agathafranca@outlook.com",
+        "password": "pwd456"
+    },
+    "invpass": {
+        "email": "agathafranca@outlook.com",
+        "password": "abc123"
+    },
+    "email404": {
+        "email": "agathafranca@404.com",
+        "password": "pwd456"
+    },
+    "shortpass": [
+        "1",
+        "12",
+        "123",
+        "1234",
+        "12345"
+    ],
+    "invemails": [
+        "agatha&gmail.com",
+        "agatha.com.br",
+        "@gmail.com",
+        "@",
+        "agatha@",
+        "121323",
+        "@#@!3!@",
+        "xpto123"
+    ]
 }
