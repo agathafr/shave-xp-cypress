@@ -16,12 +16,15 @@ module.exports = defineConfig({
       // implement node event listeners here
       on('task', {
         removeUser(email) {
-          const pool = new Pool(dbConfig)
+          return new Promise(function (resolve) {
+            const pool = new Pool(dbConfig)
 
-          pool.query('DELETE FROM users WHERE email = $1', [email], function(error, result){
-            if (error) {
-              throw error
-            }
+            pool.query('DELETE FROM users WHERE email = $1', [email], function (error, result) {
+              if (error) {
+                throw error
+              }
+              resolve({ success: result })
+            })
           })
         }
       })

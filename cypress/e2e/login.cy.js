@@ -12,8 +12,13 @@ describe('login', () => {
             // Dado que eu tenho um NOVO usuário cadastrado
             const user = data.success
 
+            cy.task('removeUser', user.email)
+                .then(function(result) {
+                    cy.log(result)
+                })
+
             cy.request({
-                method: POST,
+                method: 'POST',
                 url: 'http://localhost:3333/users',
                 body: user
             }).then(function(response){
