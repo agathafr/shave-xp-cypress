@@ -14,6 +14,10 @@ async function deleteUser(email) {
     await pool.query('DELETE FROM users WHERE email = $1', [email])
 }
 
+async function insertUser(user) {
+
+}
+
 module.exports = {
     deleteUser
 }

@@ -4,7 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-const { deleteUser } = require('./db')
+const { deleteUser, insertUser } = require('./db')
 
 app.get('/', function (req, res) {
     res.json({ message: 'Olá QAx' })
@@ -22,6 +22,13 @@ app.post('/user', async function (req, res) {
     const { name, email, password, is_shaver } = req.body
 
     const hashPass = await bcrypt.hash(password, 8)
+
+    const user = {
+        name: name,
+        email: email,
+        password: hashPass,
+        is_shaver: is_shaver
+    }
 
     console.log(hashPass)
 
