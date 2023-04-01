@@ -35,7 +35,7 @@ Cypress.Commands.add('createUser', (user) => {
 
     cy.request({
         method: 'POST',
-        url: 'http://localhost:3333/users',
+        url: 'http://localhost:5000/user/',
         body: user
     }).then(function (response) {
         expect(response.status).to.eq(201)
