@@ -17,10 +17,7 @@ app.delete('/user/:email', async function (req, res) {
 })
 
 app.post('/user', async function (req, res) {
-    console.log(req.body)
-
     const { name, email, password, is_shaver } = req.body
-
     const hashPass = await bcrypt.hash(password, 8)
 
     const user = {
@@ -30,11 +27,11 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
-    await insertUser(user)
-    
-    console.log(hashPass)
+    console.log(user)
 
-    res.status(200).end()
+    const id = await insertUser(user)
+
+    res.status(201).json({ user_id: id })
 })
 
 app.listen(5000)
