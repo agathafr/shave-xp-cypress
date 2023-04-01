@@ -30,6 +30,8 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
+    await insertUser(user)
+    
     console.log(hashPass)
 
     res.status(200).end()
