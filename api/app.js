@@ -27,6 +27,10 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
+    if (!user.is_shaver) {
+        return res.status(400).json({ message: 'Shaver is required.' })
+    }
+
     console.log(user)
 
     try {
