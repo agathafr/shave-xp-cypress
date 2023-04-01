@@ -27,20 +27,8 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
-    if (!user.name) {
-        return res.status(400).json({ message: 'Name is required.' })
-    }
-
-    if (!user.email) {
-        return res.status(400).json({ message: 'Email is required.' })
-    }
-
-    if (!user.password) {
-        return res.status(400).json({ message: 'Password is required.' })
-    }
-
-    if (!user.is_shaver) {
-        return res.status(400).json({ message: 'Shaver is required.' })
+    if (!user.name || !user.email || !user.password || !user.is_shaver) {
+        return res.status(400).json({ message: 'Every field is mandatory.' })
     }
 
     console.log(user)
