@@ -29,9 +29,13 @@ app.post('/user', async function (req, res) {
 
     console.log(user)
 
-    const id = await insertUser(user)
+    try {
+        const id = await insertUser(user)
 
-    res.status(201).json({ user_id: id })
+        res.status(201).json({ user_id: id })
+    } catch {
+        res.status(500).json({ error: 'Ocorreu um erro desconhecido.' })
+    }
 })
 
 app.listen(5000)
