@@ -37,8 +37,8 @@ app.post('/user', async function (req, res) {
         const id = await insertUser(user)
 
         res.status(201).json({ user_id: id })
-    } catch {
-        res.status(500).json({ error: 'Ocorreu um erro desconhecido.' })
+    } catch (error) {
+        res.status(500).json({ error: 'Ocorreu um erro desconhecido.', stack: error })
     }
 })
 
