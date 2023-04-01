@@ -18,6 +18,7 @@
   "author": "Agatha França",
   "license": "ISC",
   "devDependencies": {
+    "bcrypt": "^5.1.0",
     "cypress": "^12.7.0",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
