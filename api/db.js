@@ -25,5 +25,6 @@ async function insertUser(user) {
 }
 
 module.exports = {
-    deleteUser
+    deleteUser,
+    insertUser
 }
