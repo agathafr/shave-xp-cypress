@@ -12,7 +12,6 @@ describe('esqueci minha senha', () => {
         }
 
         cy.createUser(user)
-
         forgotPass.go()
         forgotPass.submit(user.email)
 
@@ -30,6 +29,8 @@ describe('esqueci minha senha', () => {
         }
 
         cy.createUser(user)
+        cy.recoveryPass(user.email)
+        cy.getToken(user.email)
 
         resetPage.go(Cypress.env('token'))
     })
