@@ -14,4 +14,10 @@ class ForgotPassPage {
         cy.contains('button', 'Recuperar')
             .click()
     }
+
+    noticeShouldBe(expectedText) {
+        cy.get('.notice p')
+            .should('be.visible')
+            .should('have.text', expectedText)
+    }
 }
