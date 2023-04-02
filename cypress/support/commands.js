@@ -24,15 +24,16 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('createUser', (user) => {
-
-   /*  cy.request({
+Cypress.Commands.add('deleteUser', (user) => {
+    cy.request({
         method: 'DELETE',
         url: 'http://localhost:5000/user/' + user.email
     }).then(function (response) {
         expect(response.status).to.eq(204)
-    }) */
+    })
+})
 
+Cypress.Commands.add('createUser', (user) => {
     cy.request({
         method: 'POST',
         url: 'http://localhost:5000/user/',
