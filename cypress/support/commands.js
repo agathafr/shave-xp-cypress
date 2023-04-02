@@ -59,6 +59,6 @@ Cypress.Commands.add('getToken', (email) => {
     }).then(result => {
         expect(result.status).to.eql(200)
         cy.log(result.body.token)
-        Cypress.env('token', result.body.token)
+        Cypress.env('passToken', result.body.token)
     })
 })

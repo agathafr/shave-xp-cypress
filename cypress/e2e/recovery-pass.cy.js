@@ -32,6 +32,6 @@ describe('esqueci minha senha', () => {
         cy.recoveryPass(user.email)
         cy.getToken(user.email)
 
-        resetPage.go(Cypress.env('token'))
+        resetPage.go(Cypress.env('passToken'))
     })
 })
