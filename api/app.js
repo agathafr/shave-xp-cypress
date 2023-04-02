@@ -24,6 +24,11 @@ app.get('/', function (req, res) {
 app.get('/token/:email', async function (req, res) {
     const { email } = req.params
     const token = await findToken(email)
+    
+    if (!token) {
+        return res.status(404).end(0)
+    }
+
     res.status(200).json(token)
 })
 
