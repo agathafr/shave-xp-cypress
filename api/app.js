@@ -4,10 +4,16 @@ const express = require('express')
 const validator = require('express-joi-validation').createValidator({})
 const app = express()
 
-
 app.use(express.json())
 
 const { deleteUser, insertUser } = require('./db')
+
+const userSchema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
+    is_shaver: Joi.boolean().required()
+})
 
 app.get('/', function (req, res) {
     res.json({ message: 'Olá QAx' })
