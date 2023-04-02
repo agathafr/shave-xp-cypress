@@ -29,7 +29,8 @@ async function findToken(email) {
         ' FROM users A' +
         ' INNER JOIN user_tokens B' +
         ' ON A.id = B.user_id' +
-        ' WHERE A.email = $1'
+        ' WHERE A.email = $1' +
+        ' ORDER BY B. created_at DESC LIMIT 1'
 
     const result = await pool.query(sql, [email])
 
