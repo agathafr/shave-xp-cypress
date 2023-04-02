@@ -16,7 +16,7 @@ describe('faça seu cadastro', () => {
             registerUserPage.noticeShouldBe(message)
         })
 
-        it.only('não deve recadastrar um email que já existe', () => {
+        it('não deve recadastrar um email que já existe', () => {
             const user = data.sameEmail
 
             registerUserPage.go()
