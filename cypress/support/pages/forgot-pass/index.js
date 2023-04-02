@@ -21,3 +21,5 @@ class ForgotPassPage {
             .should('have.text', expectedText)
     }
 }
+
+export default new ForgotPassPage() 
