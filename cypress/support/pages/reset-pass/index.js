@@ -6,3 +6,5 @@ class ResetPassPage {
             .should('have.text', 'Resetar senha')
     }
 }
+
+export default new ResetPassPage()
