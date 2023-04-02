@@ -19,7 +19,7 @@ describe('esqueci minha senha', () => {
         forgotPass.noticeShouldBe(message)
     })
 
-    it('deve poder cadastrar uma nova senha', () => {
+    context.only('quando o usuário solicita resgate de senha', () => {
 
         const user = {
             name: 'Will Souza',
@@ -28,10 +28,15 @@ describe('esqueci minha senha', () => {
             is_shaver: false
         }
 
-        cy.createUser(user)
-        cy.recoveryPass(user.email)
-        cy.getToken(user.email)
+        beforeEach(() => {
+            cy.createUser(user)
+            cy.recoveryPass(user.email)
+            cy.getToken(user.email)
+        })
 
-        resetPage.go(Cypress.env('passToken'))
+        it('deve poder cadastrar uma nova senha', () => {
+            resetPage.go(Cypress.env('passToken'))
+        })
     })
+
 })
