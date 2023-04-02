@@ -1,5 +1,7 @@
 import forgotPass from '../support/pages/forgot-pass'
 import resetPage from '../support/pages/reset-pass'
+import loginPage from '../support/pages/login'
+import shaversPage from '../support/pages/shavers'
 
 describe('esqueci minha senha', () => {
     it('deve poder solicitar o resgate de senha', () => {
@@ -39,6 +41,11 @@ describe('esqueci minha senha', () => {
             resetPage.submit('abc123', 'abc123')
             const message = 'Agora você já pode logar com a sua nova senha secreta.'
             resetPage.noticeShouldBe(message)
+        })
+
+        afterEach(() => {
+            loginPage.submit(user.email, 'abc123')
+            shaversPage.header.userShouldLoggedIn(user.name)
         })
     })
 
