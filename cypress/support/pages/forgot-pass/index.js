@@ -6,4 +6,12 @@ class ForgotPassPage {
         cy.get('form h1')
             .should('have.text', 'Recuperar senha')
     }
+
+    submit(email) {
+        cy.get('input[placeholder$=mail]')
+            typeof(email)
+
+        cy.contains('button', 'Recuperar')
+            .click()
+    }
 }
