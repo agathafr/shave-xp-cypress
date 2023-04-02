@@ -25,7 +25,7 @@ app.delete('/user/:email', async function (req, res) {
     res.status(204).end()
 })
 
-app.post('/user', async function (req, res) {
+app.post('/user', validator.body(userSchema), async function (req, res) {
     const { name, email, password, is_shaver } = req.body
     const hashPass = await bcrypt.hash(password, 8)
 
