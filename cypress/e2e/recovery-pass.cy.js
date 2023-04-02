@@ -19,7 +19,7 @@ describe('esqueci minha senha', () => {
         forgotPass.noticeShouldBe(message)
     })
 
-    context.only('quando o usuário solicita resgate de senha', () => {
+    context('quando o usuário solicita resgate de senha', () => {
 
         const user = {
             name: 'Will Souza',
@@ -36,6 +36,9 @@ describe('esqueci minha senha', () => {
 
         it('deve poder cadastrar uma nova senha', () => {
             resetPage.go(Cypress.env('passToken'))
+            resetPage.submit('abc123', 'abc123')
+            const message = 'Agora você já pode logar com a sua nova senha secreta.'
+            resetPage.noticeShouldBe(message)
         })
     })
 
