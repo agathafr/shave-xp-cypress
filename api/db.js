@@ -24,6 +24,18 @@ async function insertUser(user) {
     return id
 }
 
+async function findToken(email) {
+    const sql = 'SELECT B.token ' +
+        'FROM users A ' +
+        'INNER JOIN user_tokens B ' +
+        'ON A.id = B.user_id' +
+        'WHERE A.email = "$1'
+
+    const result = await pool.query(sql, [email])
+
+    console.log(result)
+}
+
 module.exports = {
     deleteUser,
     insertUser
