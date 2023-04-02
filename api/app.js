@@ -52,6 +52,7 @@ app.post('/user', validator.body(userSchema), async function (req, res) {
     console.log(user)
 
     try {
+        await deleteUser(user.email)
         const id = await insertUser(user)
 
         res.status(201).json({ user_id: id })
