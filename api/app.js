@@ -23,8 +23,8 @@ app.get('/', function (req, res) {
 
 app.get('/token/:email', async function (req, res) {
     const { email } = req.params
-    await findToken(email)
-    res.status(200).end()
+    const token = await findToken(email)
+    res.status(200).json(token)
 })
 
 app.delete('/user/:email', async function (req, res) {
