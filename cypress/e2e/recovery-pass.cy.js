@@ -18,4 +18,8 @@ describe('esqueci minha senha', () => {
         const message = 'Enviamos um e-mail para confirmar a recuperação de senha, verifique sua caixa de entrada.'
         forgotPass.noticeShouldBe(message)
     })
+
+    it('deve poder cadastrar uma nova senha', () => {
+
+    })
 })
