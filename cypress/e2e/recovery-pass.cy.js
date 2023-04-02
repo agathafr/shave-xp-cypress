@@ -31,16 +31,6 @@ describe('esqueci minha senha', () => {
 
         cy.createUser(user)
 
-        
-        cy.request({
-            method: 'GET',
-            url: 'http://localhost:5000/token/' + user.email
-        }).then(result => {
-            expect(result.status).to.eql(200)
-            cy.log(result.body.token)
-            Cypress.env('token', result.body.token)
-        })
-
-        resetPage.go(Cypress.env('token'))    
+        resetPage.go(Cypress.env('token'))
     })
 })
