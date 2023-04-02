@@ -1,4 +1,5 @@
 import forgotPass from '../support/pages/forgot-pass'
+import resetPage from '../support/pages/reset-pass'
 
 describe('esqueci minha senha', () => {
     it('deve poder solicitar o resgate de senha', () => {
