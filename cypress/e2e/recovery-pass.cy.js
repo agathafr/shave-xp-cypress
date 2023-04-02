@@ -43,6 +43,7 @@ describe('esqueci minha senha', () => {
             url: 'http://localhost:5000/token/' + user.email
         }).then(result => {
             expect(result.status).to.eql(200)
+            cy.log(result.body.token)
         })
     })
 })
