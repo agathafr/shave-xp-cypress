@@ -9,14 +9,14 @@ class ForgotPassPage {
 
     submit(email) {
         cy.get('input[placeholder$=mail]')
-            typeof(email)
+            .type(email)
 
         cy.contains('button', 'Recuperar')
             .click()
     }
 
     noticeShouldBe(expectedText) {
-        cy.get('.notice p')
+        cy.get('.notice p', { timeout: 10000 })
             .should('be.visible')
             .should('have.text', expectedText)
     }
