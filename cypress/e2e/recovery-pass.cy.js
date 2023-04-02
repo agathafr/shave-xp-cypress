@@ -45,6 +45,9 @@ describe('esqueci minha senha', () => {
         }).then(result => {
             expect(result.status).to.eql(200)
             cy.log(result.body.token)
+            Cypress.env('token', result.body.token)
         })
+
+        resetPage.go(Cypress.env('token'))    
     })
 })
