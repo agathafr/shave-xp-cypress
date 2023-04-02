@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt')
 const Joi = require('joi')
 const express = require('express')
-const validator = require('express-joi-validation').createValidator({})
+const validator = require('express-joi-validation').createValidator({
+    passError: true
+})
 const app = express()
 
 app.use(express.json())
