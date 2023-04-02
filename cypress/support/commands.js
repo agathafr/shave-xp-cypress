@@ -41,3 +41,13 @@ Cypress.Commands.add('createUser', (user) => {
         expect(response.status).to.eq(201)
     })
 })
+
+Cypress.Commands.add('recoveryPass', (email) => {
+    cy.request({
+        method: 'POST',
+        url: 'http://localhost:3333/password/forgot',
+        body: { email: user.email }
+    }).then(result => {
+        expect(result.status).to.eql(204)
+    })
+})

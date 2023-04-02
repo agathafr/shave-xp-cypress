@@ -31,14 +31,7 @@ describe('esqueci minha senha', () => {
 
         cy.createUser(user)
 
-        cy.request({
-            method: 'POST',
-            url: 'http://localhost:3333/password/forgot',
-            body: { email: user.email }
-        }).then(result => {
-            expect(result.status).to.eql(204)
-        })
-
+        
         cy.request({
             method: 'GET',
             url: 'http://localhost:5000/token/' + user.email
