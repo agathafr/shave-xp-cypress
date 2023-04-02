@@ -38,5 +38,6 @@ async function findToken(email) {
 
 module.exports = {
     deleteUser,
-    insertUser
+    insertUser, 
+    findToken
 }
