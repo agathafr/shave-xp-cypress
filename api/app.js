@@ -27,10 +27,6 @@ app.post('/user', async function (req, res) {
         is_shaver: is_shaver
     }
 
-    if (!user.name || !user.email || !user.password) {
-        return res.status(400).json({ message: 'Every field is mandatory.' })
-    }
-
     console.log(user)
 
     try {
