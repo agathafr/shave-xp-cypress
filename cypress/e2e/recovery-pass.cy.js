@@ -21,5 +21,20 @@ describe('esqueci minha senha', () => {
 
     it('deve poder cadastrar uma nova senha', () => {
 
+        const user = {
+            name: 'Will Souza',
+            email: 'will@yahoo.com',
+            password: 'pwd123',
+            is_shaver: false
+        }
+
+        cy.createUser(user)
+
+        cy.request({
+            method: 'GET',
+            url: 'http://localhost:5000/token/' + user.email
+        }).then(result => {
+            expect(result.status).to.eql(200)
+        })
     })
 })
