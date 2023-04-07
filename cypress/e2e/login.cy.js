@@ -25,7 +25,7 @@ describe('login', () => {
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
-            loginPage.noticeShouldBe(message)
+            loginPage.shared.noticeErrorShouldBe(message)
         })
 
         it('não deve logar com email não cadastrado', () => {
@@ -35,7 +35,7 @@ describe('login', () => {
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
 
-            loginPage.noticeShouldBe(message)
+            loginPage.shared.noticeErrorShouldBe(message)
         })
 
         it('campos obrigatórios', () => {
@@ -51,7 +51,7 @@ describe('login', () => {
             it(`não deve logar com a senha: ${p}`, () => {
                 loginPage.submit('agathafranca@outlook.com', p)
 
-                loginPage.alertShouldBe('Pelo menos 6 caracteres')
+                loginPage.shared.alertShouldBe('Pelo menos 6 caracteres')
             })
         })
     })
@@ -62,7 +62,7 @@ describe('login', () => {
             it(`não deve logar com o email no formato incorreto: ${e}`, () => {
                 loginPage.submit(e, 'pwd456')
 
-                loginPage.alertShouldBe('Informe um email válido')
+                loginPage.shared.alertShouldBe('Informe um email válido')
             })
         })
     })

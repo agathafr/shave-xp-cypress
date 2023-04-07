@@ -13,7 +13,7 @@ describe('faça seu cadastro', () => {
             registerUserPage.submit(user.name, user.email, user.password)
 
             const message = 'Boas vindas, faça login para solicitar serviços!'
-            registerUserPage.noticeSuccessShouldBe(message)
+            registerUserPage.shared.noticeSuccessShouldBe(message)
         })
 
         it('não deve recadastrar um email que já existe', () => {
@@ -26,7 +26,7 @@ describe('faça seu cadastro', () => {
             registerUserPage.submit(user.name, user.email, user.password)
 
             const message = 'Oops! E-mail já cadastrado.'
-            registerUserPage.noticeErrorShouldBe(message)
+            registerUserPage.shared.noticeErrorShouldBe(message)
         })
 
         it('campos obrigatórios', () => {
@@ -40,7 +40,7 @@ describe('faça seu cadastro', () => {
         data.shortpass.forEach((p) => {
             it(`não deve cadastrar com a senha: ${p}`, () => {
                 registerUserPage.submit('Papito Rocks', 'papito@teste.com.br', p)
-                registerUserPage.alertShouldBe('Pelo menos 6 caracteres')
+                registerUserPage.shared.alertShouldBe('Pelo menos 6 caracteres')
             })
         })
     })
@@ -49,7 +49,7 @@ describe('faça seu cadastro', () => {
         data.invemails.forEach((e) => {
             it(`não deve cadastrar com o email: ${e}`, () => {
                 registerUserPage.submit('Agatha França', e, 'pwd123')
-                registerUserPage.alertShouldBe('Informe um email válido')
+                registerUserPage.shared.alertShouldBe('Informe um email válido')
             })
         })
     })
