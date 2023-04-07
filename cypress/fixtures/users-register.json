@@ -1,13 +1,13 @@
 {
     "success": {
-        "name": "Papito Rocks",
-        "email": "papito@yahoo.com",
+        "name": "Isabel Coimbra",
+        "email": "isabel@yahoo.com",
         "password": "pwd123",
         "is_shaver": false
     },
     "sameEmail": {
-        "name": "Agatha Espanha",
-        "email": "agathafranca@outlook.com",
+        "name": "Alice Albuquerque",
+        "email": "alice@outlook.com",
         "password": "pwd123",
         "is_shaver": false
     },
@@ -19,11 +19,11 @@
         "12345"
     ],
     "invemails": [
-        "agatha&gmail.com",
-        "agatha.com.br",
+        "alice&gmail.com",
+        "alice.com.br",
         "@gmail.com",
         "@",
-        "agatha@",
+        "alice@",
         "121323",
         "@#@!3!@",
         "xpto123"
