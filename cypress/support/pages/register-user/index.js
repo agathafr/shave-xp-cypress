@@ -1,8 +1,5 @@
 class RegisterUserPage {
-    constructor() {
-        this.alertError = '.alert-error'
-    }
-
+    
     go() {
         cy.visit('/signup')
 
@@ -33,28 +30,8 @@ class RegisterUserPage {
             .click()
     }
 
-    noticeErrorShouldBe(message) {
-        cy.get('.notice-container')
-            .should('be.visible')
-            .find('.error p')
-            .should('have.text', message)
-    }
-
-    noticeSuccessShouldBe(message) {
-        cy.get('.notice-container')
-            .should('be.visible')
-            .find('.success p')
-            .should('have.text', message)
-    }
-
-    alertShouldBe(message) {
-        cy.get(this.alertError)
-            .should('be.visible')
-            .should('have.text', message)
-    }
-
     requiredFields(nameMessage, emailMessage, passwordMessage) {
-        cy.get(this.alertError)
+        cy.get('.alert-error')
             .should('have.length', 3)
             .and(($small) => {
                 expect($small.get(0).textContent).to.equal(nameMessage)
