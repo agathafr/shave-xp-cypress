@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import './commands/notice'
 import './commands/alert'
+import './commands/signup'
 import './commands/login'
 import './commands/order'
 
