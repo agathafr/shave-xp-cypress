@@ -20,3 +20,5 @@ class SharedSteps {
             .should('have.text', message)
     }
 }
+
+export default new SharedSteps()
