@@ -33,10 +33,18 @@ class RegisterUserPage {
             .click()
     }
 
-    noticeShouldBe(expectedText) {
-        cy.get('.notice p', { timeout: 10000 })
+    noticeErrorShouldBe(message) {
+        cy.get('.notice-container')
             .should('be.visible')
-            .should('have.text', expectedText)
+            .find('.error p')
+            .should('have.text', message)
+    }
+
+    noticeSuccessShouldBe(message) {
+        cy.get('.notice-container')
+            .should('be.visible')
+            .find('.success p')
+            .should('have.text', message)
     }
 
     alertShouldBe(message) {
