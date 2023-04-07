@@ -28,8 +28,6 @@ import './commands/alert'
 import './commands/login'
 import './commands/order'
 
-import shaversPage from '../support/pages/views/shavers'
-
 Cypress.Commands.add('deleteUser', (user) => {
     cy.request({
         method: 'DELETE',
