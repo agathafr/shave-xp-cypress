@@ -12,6 +12,6 @@ module.exports = defineConfig({
     },
     viewportWidth: 1920,
     viewportHeight: 1080,
-    baseUrl: 'http://localhost:3000'
+    baseUrl: process.env.APP_WEB_URL
   },
 });
