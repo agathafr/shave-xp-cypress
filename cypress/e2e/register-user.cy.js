@@ -38,7 +38,7 @@ describe('faça seu cadastro', () => {
 
     context('senha muito curta', () => {
         data.shortpass.forEach((p) => {
-            it(`não deve logar com a senha: ${p}`, () => {
+            it(`não deve cadastrar com a senha: ${p}`, () => {
                 registerUserPage.submit('Papito Rocks', 'papito@teste.com.br', p)
                 registerUserPage.alertShouldBe('Pelo menos 6 caracteres')
             })
@@ -47,7 +47,7 @@ describe('faça seu cadastro', () => {
 
     context('email no formato incorreto', () => {
         data.invemails.forEach((e) => {
-            it(`não deve logar com o email: ${e}`, () => {
+            it(`não deve cadastrar com o email: ${e}`, () => {
                 registerUserPage.submit('Agatha França', e, 'pwd123')
                 registerUserPage.alertShouldBe('Informe um email válido')
             })
