@@ -26,6 +26,7 @@
 import './commands/notice'
 import './commands/alert'
 import './commands/login'
+import './commands/order'
 
 import shaversPage from '../support/pages/views/shavers'
 
