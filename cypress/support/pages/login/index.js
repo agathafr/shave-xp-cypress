@@ -1,8 +1,10 @@
+import shared from '../shared'
 
 class LoginPage {
 
     constructor() {
         this.alertError = '.alert-error'
+        this.shared = shared
     }
 
     submit(email = null, password = null) {
@@ -21,19 +23,6 @@ class LoginPage {
 
         cy.contains('button', 'Entrar') //button[text()="Entrar"]
             .click()
-    }
-
-    noticeShouldBe(message) {
-        cy.get('.notice-container')
-            .should('be.visible')
-            .find('.error p')
-            .should('have.text', message)
-    }
-
-    alertShouldBe(message) {
-        cy.get(this.alertError)
-            .should('be.visible')
-            .should('have.text', message)
     }
 
     requiredFields(emailMessage, passwordMessage) {
