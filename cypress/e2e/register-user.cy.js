@@ -13,7 +13,7 @@ describe('faça seu cadastro', () => {
             registerUserPage.submit(user.name, user.email, user.password)
 
             const message = 'Boas vindas, faça login para solicitar serviços!'
-            registerUserPage.noticeShouldBe(message)
+            registerUserPage.noticeSuccessShouldBe(message)
         })
 
         it('não deve recadastrar um email que já existe', () => {
@@ -26,7 +26,7 @@ describe('faça seu cadastro', () => {
             registerUserPage.submit(user.name, user.email, user.password)
 
             const message = 'Oops! E-mail já cadastrado.'
-            registerUserPage.noticeShouldBe(message)
+            registerUserPage.noticeErrorShouldBe(message)
         })
 
         it('campos obrigatórios', () => {
