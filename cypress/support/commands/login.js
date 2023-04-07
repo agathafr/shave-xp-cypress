@@ -23,3 +23,32 @@ Cypress.Commands.add('userShouldBeLoggedIn', (name) => {
         .should('be.visible')
         .should('have.text', 'Olá, ' + firstName)
 })
+
+Cypress.Commands.add('requestPassword', (email) => {
+    cy.visit('/forgot-password')
+
+    cy.get('form h1')
+        .should('have.text', 'Recuperar senha')
+
+    cy.get('input[placeholder$=mail]')
+        .type(email)
+
+    cy.contains('button', 'Recuperar')
+        .click()
+})
+
+Cypress.Commands.add('resetPassword', (token, newPass, confirmPass) => {
+    cy.visit('/reset-password?token=' + token)
+
+    cy.get('form h1')
+        .should('have.text', 'Resetar senha')
+
+    cy.get('input[placeholder="Nova senha"]')
+        .type(newPass)
+
+    cy.get('input[placeholder="Confirmação da senha"]')
+        .type(confirmPass)
+
+    cy.contains('button', 'Alterar senha')
+        .click()
+})
