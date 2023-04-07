@@ -1,5 +1,5 @@
 class RegisterUserPage {
-    
+
     go() {
         cy.visit('/signup')
 
