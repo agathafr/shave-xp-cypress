@@ -1,4 +1,5 @@
-import registerUserPage from '../support/pages/register-user'
+import registerUserPage from '../support/pages/views/register-user'
+
 import data from '../fixtures/users-register.json'
 
 describe('faça seu cadastro', () => {
