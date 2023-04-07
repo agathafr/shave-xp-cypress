@@ -70,11 +70,6 @@ Cypress.Commands.add('getToken', (email) => {
     })
 })
 
-Cypress.Commands.add('uiLogin', (user) => {
-    loginPage.submit(user.email, user.password)
-    shaversPage.header.userShouldLoggedIn(user.name)
-})
-
 Cypress.Commands.add('apiLogin', (user) => {
     cy.request({
         method: 'POST',

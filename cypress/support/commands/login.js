@@ -52,3 +52,9 @@ Cypress.Commands.add('resetPassword', (token, newPass, confirmPass) => {
     cy.contains('button', 'Alterar senha')
         .click()
 })
+
+//Helper
+Cypress.Commands.add('uiLogin', (user) => {
+    cy.submitLogin(user.email, user.password)
+    cy.userShouldLoggedIn(user.name)
+})
