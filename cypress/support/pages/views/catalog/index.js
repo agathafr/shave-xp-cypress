@@ -1,4 +1,5 @@
 class CatalogPage {
+
     selectService(name) {
         cy.contains('.catalog-item h3', name)
             .should('be.visible')

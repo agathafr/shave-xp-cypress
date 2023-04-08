@@ -1,4 +1,5 @@
 class ResetPassPage {
+
     go(token) {
         cy.visit('/reset-password?token=' + token)
 

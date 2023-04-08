@@ -1,4 +1,3 @@
-
 class Header {
     userShouldLoggedIn(name) {
         const firstName = name.split(' ')[0]
