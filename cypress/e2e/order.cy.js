@@ -3,6 +3,7 @@ import data from '../fixtures/order.json'
 describe('pedido', () => {
 
     context('quando o cliente está logado', () => {
+        
         const { customer, shaver, service } = data
 
         before(() => {

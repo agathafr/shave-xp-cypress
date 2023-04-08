@@ -38,6 +38,7 @@ describe('faça seu cadastro', () => {
     })
 
     context('senha muito curta', () => {
+        
         data.shortpass.forEach((p) => {
             it(`não deve cadastrar com a senha: ${p}`, () => {
                 cy.signup('Isabel Coimbra', 'isabel@teste.com.br', p)
@@ -47,6 +48,7 @@ describe('faça seu cadastro', () => {
     })
 
     context('email no formato incorreto', () => {
+        
         data.invemails.forEach((e) => {
             it(`não deve cadastrar com o email: ${e}`, () => {
                 cy.signup('Alice Albuquerque', e, 'pwd123')
