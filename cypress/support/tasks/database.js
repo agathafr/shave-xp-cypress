@@ -1,5 +1,7 @@
 const { Pool } = require('pg')
 
+require("dotenv/config");
+
 const dbConfig = {
     host: process.env.POSTGRES_HOST,
     user: process.env.POSTGRES_USER,
