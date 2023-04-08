@@ -3,7 +3,9 @@ import registerUserPage from '../support/pages/views/register-user'
 import data from '../fixtures/users-register.json'
 
 describe('faça seu cadastro', () => {
+
     context('quando submeto o formulário', () => {
+
         it('deve cadastrar usuário com sucesso', () => {
             const user = data.success
 
@@ -38,6 +40,7 @@ describe('faça seu cadastro', () => {
     })
 
     context('senha muito curta', () => {
+
         data.shortpass.forEach((p) => {
             it(`não deve cadastrar com a senha: ${p}`, () => {
                 registerUserPage.submit('Isabel Coimbra', 'isabel@teste.com.br', p)
@@ -47,6 +50,7 @@ describe('faça seu cadastro', () => {
     })
 
     context('email no formato incorreto', () => {
+
         data.invemails.forEach((e) => {
             it(`não deve cadastrar com o email: ${e}`, () => {
                 registerUserPage.submit('Alice Albuquerque', e, 'pwd123')
