@@ -1,5 +1,5 @@
 class OrderPage {
-    
+
     hasOrder() {
         cy.get('h1')
             .should('be.visible')
