@@ -3,6 +3,7 @@ import resetPage from '../support/pages/views/reset-pass'
 import loginPage from '../support/pages/views/login'
 import shaversPage from '../support/pages/views/shavers'
 
+
 describe('esqueci minha senha', () => {
     it('deve poder solicitar o resgate de senha', () => {
 
@@ -18,7 +19,7 @@ describe('esqueci minha senha', () => {
         forgotPass.submit(user.email)
 
         const message = 'Enviamos um e-mail para confirmar a recuperação de senha, verifique sua caixa de entrada.'
-        forgotPass.noticeShouldBe(message)
+        forgotPass.shared.noticeSuccessShouldBe(message)
     })
 
     context('quando o usuário solicita resgate de senha', () => {
@@ -40,7 +41,7 @@ describe('esqueci minha senha', () => {
             resetPage.go(Cypress.env('passToken'))
             resetPage.submit('abc123', 'abc123')
             const message = 'Agora você já pode logar com a sua nova senha secreta.'
-            resetPage.noticeShouldBe(message)
+            resetPage.shared.noticeSuccessShouldBe(message)
         })
 
         afterEach(() => {

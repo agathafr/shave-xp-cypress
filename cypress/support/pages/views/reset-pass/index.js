@@ -1,4 +1,10 @@
+import shared from "../../shared"
+
 class ResetPassPage {
+
+    constructor() {
+        this.shared = shared
+    }
 
     go(token) {
         cy.visit('/reset-password?token=' + token)
@@ -16,12 +22,6 @@ class ResetPassPage {
 
         cy.contains('button', 'Alterar senha')
             .click()
-    }
-
-    noticeShouldBe(expectedText) {
-        cy.get('.notice p', { timeout: 10000 })
-            .should('be.visible')
-            .should('have.text', expectedText)
     }
 }
 

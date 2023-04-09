@@ -1,5 +1,11 @@
+import shared from "../../shared"
+
 class ForgotPassPage {
-    
+
+    constructor() {
+        this.shared = shared
+    }
+
     go() {
         cy.visit('/forgot-password')
 
@@ -14,12 +20,6 @@ class ForgotPassPage {
 
         cy.contains('button', 'Recuperar')
             .click()
-    }
-
-    noticeShouldBe(expectedText) {
-        cy.get('.notice p', { timeout: 10000 })
-            .should('be.visible')
-            .should('have.text', expectedText)
     }
 }
 
