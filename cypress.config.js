@@ -15,9 +15,9 @@ module.exports = defineConfig({
         }
       })
 
-        on('task', {
-          removeUser
-        })
+      on('task', {
+        removeUser
+      })
     },
     viewportWidth: 1920,
     viewportHeight: 1080,
