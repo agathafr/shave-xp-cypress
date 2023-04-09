@@ -1,10 +1,7 @@
-const APP_API_URL = 'http://localhost:3333'
-const APP_API_HELPER_URL = 'http://localhost:5000'
-
 Cypress.Commands.add('deleteUser', (user) => {
     cy.request({
         method: 'DELETE',
-        url: `${APP_API_HELPER_URL}/user/` + user.email
+        url: `${Cypress.env('auth_api_helper_url')}/user/` + user.email
     }).then(function (response) {
         expect(response.status).to.eq(204)
     })
@@ -13,7 +10,7 @@ Cypress.Commands.add('deleteUser', (user) => {
 Cypress.Commands.add('createUser', (user) => {
     cy.request({
         method: 'POST',
-        url: `${APP_API_HELPER_URL}/user`,
+        url: `${Cypress.env('auth_api_helper_url')}/user`,
         body: user
     }).then(function (response) {
         expect(response.status).to.eq(201)
@@ -23,7 +20,7 @@ Cypress.Commands.add('createUser', (user) => {
 Cypress.Commands.add('recoveryPass', (email) => {
     cy.request({
         method: 'POST',
-        url: `${APP_API_URL}/password/forgot`,
+        url: `${Cypress.env('app_api_url')}/password/forgot`,
         body: { email: email }
     }).then(result => {
         expect(result.status).to.eql(204)
@@ -33,7 +30,7 @@ Cypress.Commands.add('recoveryPass', (email) => {
 Cypress.Commands.add('getToken', (email) => {
     cy.request({
         method: 'GET',
-        url: `${APP_API_HELPER_URL}/token/` + email
+        url: `${Cypress.env('auth_api_helper_url')}/token/` + email
     }).then(result => {
         expect(result.status).to.eql(200)
         cy.log(result.body.token)
@@ -44,7 +41,7 @@ Cypress.Commands.add('getToken', (email) => {
 Cypress.Commands.add('apiLogin', (user) => {
     cy.request({
         method: 'POST',
-        url: `${APP_API_URL}/sessions`,
+        url: `${Cypress.env('app_api_url')}/sessions`,
         body: { email: user.email, password: user.password }
     }).then(response => {
         expect(response.status).to.eql(200)
