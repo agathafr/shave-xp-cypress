@@ -11,6 +11,7 @@ module.exports = defineConfig({
       return Object.assign({}, config, {
         env: {
           app_api_url: process.env.APP_API_URL,
+          app_web_url: process.env.APP_WEB_URL,
           auth_api_helper_url: process.env.APP_API_HELPER_URL,
         }
       })
