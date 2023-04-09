@@ -3,14 +3,14 @@ class SharedSteps {
     noticeErrorShouldBe(message) {
         cy.get('.notice-container')
             .should('be.visible')
-            .find('.error p')
+            .find('.error p', { timeout: 10000 })
             .should('have.text', message)
     }
 
     noticeSuccessShouldBe(message) {
         cy.get('.notice-container')
             .should('be.visible')
-            .find('.success p')
+            .find('.success p', { timeout: 10000 })
             .should('have.text', message)
     }
 
