@@ -29,7 +29,7 @@ Os testes são escritos com **Cypress** e dependem da execução conjunta da API
 ### 1️⃣ Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/shave-xp-tests.git
+git clone https://github.com/agathafr/shave-xp-tests.git
 cd shave-xp-tests
 npm install
 ```
