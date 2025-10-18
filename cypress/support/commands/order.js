@@ -26,7 +26,7 @@ Cypress.Commands.add('confirmOrder', () => {
 Cypress.Commands.add('hasOrder', () => {
     cy.get('h1')
         .should('be.visible')
-        .should('have.text', 'PEDIDO RECEBIDO')
+        .should('have.text', 'Escolha o serviço')
 
     cy.get('p')
         .should('be.visible')

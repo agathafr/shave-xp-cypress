@@ -1,16 +1,16 @@
 {
     "success": {
-        "name": "Agatha",
-        "email": "agathafranca@outlook.com",
+        "name": "Jeff",
+        "email": "jeff@shavexp.com",
         "password": "pwd456",
         "is_shaver": false
     },
     "invpass": {
-        "email": "agathafranca@outlook.com",
+        "email": "lima@shavexp.com",
         "password": "abc123"
     },
     "email404": {
-        "email": "agathafranca@404.com",
+        "email": "error@404.com",
         "password": "pwd456"
     },
     "shortpass": [
@@ -21,11 +21,11 @@
         "12345"
     ],
     "invemails": [
-        "agatha&gmail.com",
-        "agatha.com.br",
+        "tiers&gmail.com",
+        "felicio.com.br",
         "@gmail.com",
         "@",
-        "agatha@",
+        "britney@",
         "121323",
         "@#@!3!@",
         "xpto123"

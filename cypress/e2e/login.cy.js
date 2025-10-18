@@ -47,7 +47,7 @@ describe('login', () => {
 
         data.shortpass.forEach((p) => {
             it(`não deve logar com a senha: ${p}`, () => {
-                cy.submitLogin('agathafranca@outlook.com', p)
+                cy.submitLogin('duna@shavexp.com', p)
                 cy.alertShouldBe('Pelo menos 6 caracteres')
             })
         })

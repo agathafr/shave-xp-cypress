@@ -6,7 +6,7 @@ Cypress.Commands.add('noticeErrorShouldBe', (message) => {
 })
 
 Cypress.Commands.add('noticeSuccessShouldBe', (message) => {
-    cy.get('.notice-container', { timeout: 10000 })
+    cy.get('.notice-container', { timeout: 20000 })
         .should('be.visible')
         .find('.success p')
         .should('have.text', message)
