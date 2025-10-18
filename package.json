@@ -4,7 +4,9 @@
   "description": "Projeto de testes de ponta a ponta para o Shave eXperience",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "helper": "node api/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env DOTENV_CONFIG_PATH=../../../../.env node -r dotenv/config dist/shared/infra/http/server.js"
   },
   "keywords": [
     "cypress",

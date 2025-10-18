@@ -47,7 +47,7 @@ describe('login', () => {
 
         data.shortpass.forEach((p) => {
             it(`não deve logar com a senha: ${p}`, () => {
-                loginPage.submit('agathafranca@outlook.com', p)
+                loginPage.submit('agatha@shavexp.com', p)
 
                 loginPage.shared.alertShouldBe('Pelo menos 6 caracteres')
             })
