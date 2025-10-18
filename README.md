@@ -96,22 +96,19 @@ O endereço local da aplicação geralmente é **http://localhost:3000** (pode v
 ## 🧪 Instalar e Executar o Projeto de Testes (Cypress)
 
 ### 1. Clonar o projeto de testes
-Clone 
+No terminal, execute:
+
 ```bash
+cd C:\workspace\projects\shave-xp-cypress
 git clone https://github.com/agathafr/shave-xp-cypress
 ```
-o [repositório de testes automatizados](https://github.com/agathafr/shave-xp-cypress) para a pasta:  
-```
-C:\workspace\projects\shave-xp-cypress
-```
-
 
 
 ### 3. Instalar dependências do Cypress
 No terminal, execute:
 
 ```bash
-cd C:\workspace\projects\shave-xp-cypress-main
+cd C:\workspace\projects\shave-xp-cypress
 npm install cypress@12.7.0 --save-dev
 ```
 
