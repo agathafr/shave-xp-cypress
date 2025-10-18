@@ -27,7 +27,7 @@ C:/
     │       ├── api/
     │       └── web/
     └── projects/
-        └── shave-xp-cypress-main/
+        └── shave-xp-cypress/
 ```
 
 ---
@@ -95,15 +95,17 @@ O endereço local da aplicação geralmente é **http://localhost:3000** (pode v
 
 ## 🧪 Instalar e Executar o Projeto de Testes (Cypress)
 
-### 1. Clonar ou baixar o projeto de testes
-Baixe ou clone o repositório de testes automatizados:  
-👉 [https://github.com/agathafr/shave-xp-cypress](https://github.com/agathafr/shave-xp-cypress)
-
-### 2. Extrair e mover o projeto
-Extraia o conteúdo e mova para:
+### 1. Clonar o projeto de testes
+Clone 
+```bash
+git clone https://github.com/agathafr/shave-xp-cypress
+```
+o [repositório de testes automatizados](https://github.com/agathafr/shave-xp-cypress) para a pasta:  
 ```
 C:\workspace\projects\shave-xp-cypress
 ```
+
+
 
 ### 3. Instalar dependências do Cypress
 No terminal, execute:
