@@ -27,7 +27,7 @@ C:/
     │       ├── api/
     │       └── web/
     └── projects/
-        └── shave-xp-cypress/
+        └── shave-xp-cypress-main/
 ```
 
 ---
@@ -109,7 +109,7 @@ C:\workspace\projects\shave-xp-cypress
 No terminal, execute:
 
 ```bash
-cd C:\workspace\projects\shave-xp-cypress
+cd C:\workspace\projects\shave-xp-cypress-main
 npm install cypress@12.7.0 --save-dev
 ```
 
