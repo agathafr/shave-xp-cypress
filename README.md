@@ -1,161 +1,210 @@
-# 🪒 Shave XP – Configuração do Ambiente e Execução dos Testes
+# 🧪 Shave XP – Testes automatizados (Cypress)
 
-Este guia descreve todas as etapas necessárias para configurar e executar o projeto **Shave XP** — incluindo a instalação da API, da aplicação web e do projeto de testes automatizados com **Cypress**.
-
----
-
-## 🧰 Ferramentas e Tecnologias Necessárias
-
-Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em seu computador:
-
-- [Visual Studio Code (VSCode)](https://code.visualstudio.com/)
-- [Git](https://git-scm.com/downloads)
-- [Node.js](https://nodejs.org/en/download/)
-- [Cypress](https://www.cypress.io/)
+Este repositório contém os **testes automatizados de ponta a ponta (E2E)** do projeto **Shave XP**, cobrindo os principais fluxos da aplicação web e da API.  
+Os testes são escritos com **Cypress** e dependem da execução conjunta da API (porta 3333), da aplicação web (porta 3000) e do helper de banco de dados (porta 5000).
 
 ---
 
-## ⚙️ Estrutura de Pastas
-
-A estrutura de diretórios esperada é a seguinte:
+## ⚙️ Estrutura do projeto
 
 ```
-C:/
-└── workspace/
-    ├── apps/
-    │   └── shave-xp/
-    │       ├── api/
-    │       └── web/
-    └── projects/
-        └── shave-xp-cypress/
+/
+├─ cypress/
+│  ├─ e2e/             # Suítes de testes (login, pedidos, recuperação de senha, etc.)
+│  ├─ support/         # Comandos customizados e hooks
+│  └─ fixtures/        # Dados e mocks usados nos testes
+├─ api/                # Helper Express (porta 5000) para manipular o banco de dados
+│  ├─ app.js
+│  ├─ db.js
+│  └─ database.js
+├─ cypress.config.js   # Configuração principal do Cypress
+├─ package.json
+└─ .env.example
 ```
 
 ---
 
-## 🚀 Instalar e Executar a API e Aplicação Web
+## 🚀 Como executar o projeto de testes
 
-### 1. Criar as pastas do ambiente
-```bash
-C:\
-mkdir workspace
-cd workspace
-mkdir apps projects
-cd apps
-mkdir shave-xp
-```
-
-### 2. Baixar e configurar o projeto principal
-1. Baixe o arquivo **`shavexp-mvp-1.zip`**  
-2. Extraia o conteúdo do arquivo  
-3. Copie as pastas `api` e `web` extraídas para:  
-   ```
-   C:\workspace\apps\shave-xp\
-   ```
-
-### 3. Instalar dependências
-No terminal, execute os comandos abaixo:
+### 1️⃣ Clonar o repositório
 
 ```bash
-cd C:\workspace\apps\shave-xp\api
-npm install
-
-cd C:\workspace\apps\shave-xp\web
+git clone https://github.com/seu-usuario/shave-xp-tests.git
+cd shave-xp-tests
 npm install
 ```
 
-### 4. Abrir o projeto no VSCode
-1. Abra o **VSCode**  
-2. Vá em **File > Open Folder**  
-3. Selecione a pasta:  
-   ```
-   C:\workspace\apps\shave-xp
-   ```
+---
 
-### 5. Executar a API e a aplicação
-No terminal do VSCode, execute:
+### 2️⃣ Configurar variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com o conteúdo abaixo:
 
 ```bash
-# Iniciar a API
-cd api
+APP_WEB_URL=http://localhost:3000
+APP_API_URL=http://localhost:3333
+APP_API_HELPER_URL=http://localhost:5000
+```
+
+Essas variáveis permitem que o Cypress se comunique corretamente com:
+- a aplicação Web (porta **3000**);
+- a API (porta **3333**);
+- o helper de banco de dados (porta **5000**).
+
+---
+
+### 3️⃣ Preparar o ambiente da API e do banco
+
+No repositório **shave-xp-apps**, acesse a pasta `api` e execute:
+
+```bash
+npm run db:init
+npm run db:populate
 npm run dev
 ```
 
-Em outro terminal:
-
-```bash
-# Iniciar a aplicação Web
-cd web
-npm run dev
-```
-
-Após isso, a API e a aplicação web estarão rodando localmente.  
-O endereço local da aplicação geralmente é **http://localhost:3000** (pode variar conforme a configuração do projeto).
+> Isso cria as tabelas, popula o banco com dados iniciais e inicia o servidor da API (porta **3333**).
 
 ---
 
-## 🧪 Instalar e Executar o Projeto de Testes (Cypress)
+### 4️⃣ Subir a aplicação web
 
-### 1. Clonar o projeto de testes
-No terminal, execute:
-
-```bash
-cd C:\workspace\projects\shave-xp-cypress
-git clone https://github.com/agathafr/shave-xp-cypress
-```
-
-### 3. Instalar dependências do Node
-No terminal, execute o comando abaixo:
+Ainda no repositório **shave-xp-apps**, acesse a pasta `web`:
 
 ```bash
-cd C:\workspace\projects\shave-xp-cypress
 npm install
+npm start
 ```
 
-### 4. Instalar dependências do Cypress
-No terminal, execute:
+> O frontend ficará disponível em **http://localhost:3000**.
+
+---
+
+### 5️⃣ Subir o helper de banco de dados
+
+Volte ao repositório de testes (`shave-xp-tests`) e execute:
 
 ```bash
-cd C:\workspace\projects\shave-xp-cypress
-npm install cypress@12.7.0 --save-dev
+node api/app.js
 ```
 
-### 5. Renomeie o arquivo '.env'
-Remova o .example para que o arquivo fique apenas '.env'
+> O helper ficará disponível em **http://localhost:5000**.  
+> Ele é responsável por criar e remover usuários diretamente no banco de dados durante a execução dos testes.
 
-## 🗄️ Provisionamento e Configuração do Banco de Dados da Aplicação
+---
 
-O projeto utiliza um banco de dados provisionado através da plataforma **Aiven**.
+### 6️⃣ Executar os testes
 
-### 🔧 Passos para configuração
+Com todos os serviços ativos, abra o Cypress:
 
-1. Acesse o console da Aiven: [https://console.aiven.io/](https://console.aiven.io/)  
-2. Crie um novo serviço de banco de dados (ex: PostgreSQL).  
-3. Configure as credenciais de acesso (usuário, senha e nome do banco).  
-4. Atualize as variáveis de ambiente do projeto (`.env`) com as informações geradas.  
-5. Reinicie a aplicação após salvar as configurações para que as conexões sejam atualizadas corretamente.
-
-### 6. Abrir o Cypress
 ```bash
 npx cypress open
 ```
 
-Isso abrirá a interface gráfica do Cypress, permitindo executar os testes manualmente ou selecionar o modo de execução desejado.
+> O modo interativo será aberto, permitindo escolher quais suítes executar.
+
+Ou, para rodar tudo automaticamente:
+
+```bash
+npx cypress run
+```
 
 ---
 
-## 🧩 Dicas Importantes
+## 📧 Configuração de envio de e-mails (Ethereal ou Mailtrap)
 
-- Sempre mantenha a **API e a aplicação web** rodando antes de iniciar os testes.  
-- Caso encontre erros de dependência, rode novamente o comando `npm install`.  
-- Certifique-se de estar utilizando a versão correta do Node.js (recomendada: LTS).  
-- Os testes Cypress devem apontar para a URL local da aplicação (`localhost`).
+Para que o endpoint `/password/forgot` funcione corretamente, é necessário configurar um **serviço SMTP** no projeto da API.
+
+A API utiliza o **Nodemailer** e suporta **Ethereal** (recomendado para ambiente de testes) ou **Mailtrap**.
+
+### 🔹 Opção 1 – Ethereal (recomendada)
+
+O Ethereal gera contas temporárias automaticamente e exibe os e-mails enviados em uma inbox acessível por link.
+
+#### Passos:
+
+1. Acesse [https://ethereal.email/create](https://ethereal.email/create)  
+2. Copie os dados de acesso (host, port, user, pass).  
+3. No projeto da API (`shave-xp-apps/api`), adicione no arquivo `.env`:
+
+```bash
+MAIL_DRIVER=ethereal
+MAIL_HOST=smtp.ethereal.email
+MAIL_PORT=587
+MAIL_USER=SEU_USUARIO_ETHEREAL
+MAIL_PASS=SUA_SENHA_ETHEREAL
+MAIL_FROM='"Shave XP" <no-reply@shavexp.com>'
+```
+
+4. Reinicie a API com `npm run dev`.
+
+Após enviar o e-mail de recuperação de senha, o log da API exibirá algo como:
+
+```
+E-mail enviado: https://ethereal.email/message/WaQKMgKddxQDoou...
+```
+
+Acesse esse link para visualizar o e-mail gerado.
 
 ---
 
-## 📜 Licença
+### 🔹 Opção 2 – Mailtrap (alternativa)
 
-Este projeto é de uso interno e está sob a licença definida pelo repositório principal do **Shave XP**.
+Configure uma conta gratuita em [https://mailtrap.io](https://mailtrap.io) e adicione ao `.env` da API:
+
+```bash
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USER=SEU_USER_MAILTRAP
+MAIL_PASS=SEU_PASS_MAILTRAP
+MAIL_FROM='"Shave XP" <no-reply@shavexp.com>'
+```
 
 ---
 
+### 🧠 Dica para testes automatizados
 
+Durante os testes automatizados, você pode **desativar o envio real de e-mails**.  
+Adicione no `.env` da API:
+
+```bash
+DISABLE_MAIL=true
+```
+
+E ajuste a rota `/password/forgot` para retornar **204** sem enviar e-mail:
+
+```js
+if (process.env.DISABLE_MAIL === 'true') {
+  return res.status(204).end()
+}
+```
+
+Assim os testes passam normalmente sem depender de SMTP ativo.
+
+---
+
+## 🧩 Suítes incluídas
+
+| Suíte             | Descrição                                                                 |
+|-------------------|---------------------------------------------------------------------------|
+| **login.cy.js**   | Testa login válido, inválido e validações de campos obrigatórios.         |
+| **orders.cy.js**  | Testa criação e listagem de pedidos.                                      |
+| **recovery-pass** | Testa o fluxo de recuperação de senha e envio de e-mail via Ethereal.     |
+
+---
+
+## 🧾 Dicas de estabilidade
+
+- Garanta que o helper (`api/app.js`) esteja rodando **antes** de iniciar os testes.  
+- Crie usuários via `/user` (porta 5000) **antes** de autenticar via `/sessions`.  
+- Use `cy.intercept()` para esperar respostas da API antes dos asserts.  
+- Adicione `cy.wait('@login')` ou `cy.location()` após o login para evitar flakiness.  
+- Confirme que as portas **3000**, **3333** e **5000** estão livres e em uso pelos serviços corretos.  
+
+---
+
+## ✅ Conclusão
+
+Após seguir todos os passos — configurando a API, o frontend, o helper e as variáveis de ambiente — o projeto de testes estará pronto.  
+Você poderá rodar todas as suítes com sucesso, validando login, pedidos e recuperação de senha com suporte total ao envio de e-mails via Ethereal ou Mailtrap.
