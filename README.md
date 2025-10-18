@@ -103,8 +103,15 @@ cd C:\workspace\projects\shave-xp-cypress
 git clone https://github.com/agathafr/shave-xp-cypress
 ```
 
+### 3. Instalar dependências do Node
+No terminal, execute o comando abaixo:
 
-### 3. Instalar dependências do Cypress
+```bash
+cd C:\workspace\projects\shave-xp-cypress
+npm install
+```
+
+### 4. Instalar dependências do Cypress
 No terminal, execute:
 
 ```bash
@@ -112,7 +119,22 @@ cd C:\workspace\projects\shave-xp-cypress
 npm install cypress@12.7.0 --save-dev
 ```
 
-### 4. Abrir o Cypress
+### 5. Renomeie o arquivo '.env'
+Remova o .example para que o arquivo fique apenas '.env'
+
+## 🗄️ Provisionamento e Configuração do Banco de Dados da Aplicação
+
+O projeto utiliza um banco de dados provisionado através da plataforma **Aiven**.
+
+### 🔧 Passos para configuração
+
+1. Acesse o console da Aiven: [https://console.aiven.io/](https://console.aiven.io/)  
+2. Crie um novo serviço de banco de dados (ex: PostgreSQL).  
+3. Configure as credenciais de acesso (usuário, senha e nome do banco).  
+4. Atualize as variáveis de ambiente do projeto (`.env`) com as informações geradas.  
+5. Reinicie a aplicação após salvar as configurações para que as conexões sejam atualizadas corretamente.
+
+### 6. Abrir o Cypress
 ```bash
 npx cypress open
 ```
