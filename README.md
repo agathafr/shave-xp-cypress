@@ -1,6 +1,6 @@
 # 🧪 Shave XP – Testes automatizados (Cypress)
 
-Este repositório contém os **testes automatizados de ponta a ponta (E2E)** do projeto **Shave XP**, cobrindo os principais fluxos da aplicação web e da API.  
+Este repositório contém os **testes automatizados de ponta a ponta (E2E)** do projeto **Shave XP**, cobrindo os principais fluxos da aplicação web.  
 Os testes são escritos com **Cypress** e dependem da execução conjunta da API (porta 3333), da aplicação web (porta 3000) e do helper de banco de dados (porta 5000).
 
 ---
